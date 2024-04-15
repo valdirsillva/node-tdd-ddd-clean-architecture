@@ -57,7 +57,7 @@ describe('LogControllerDecorator', () => {
             }
         }
         const httpResponse = await sut.handle(httpRequest)
-        expect(httpRequest).toEqual({
+        expect(httpResponse).toEqual({
             statusCode: 200,
             body: {
                 name: 'Valdir',
