@@ -1,7 +1,7 @@
 import { EmailValidation } from "./email-validation"
 import { EmailValidator } from "../../http/email-validator"
 import { HttpRequest } from "../../http"
-import { serverError } from "../http-helper"
+import { serverError } from "../http/http-helper"
 import { ServerError } from "../../errors"
 
 const makeEmailValidator = (): EmailValidator => {
