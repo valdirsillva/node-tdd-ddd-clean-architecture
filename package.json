@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sucrase-node src/main/server.ts",
+    "start": "node build//main/server.js",
+    "build": "tsc",
+    "dev": "sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
@@ -34,7 +36,6 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.19.2",
-    "fast-glob": "^3.3.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^4.1.1",
     "sucrase": "^3.35.0",

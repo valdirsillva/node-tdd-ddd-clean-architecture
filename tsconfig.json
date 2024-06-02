@@ -1,12 +1,18 @@
 {
     "compilerOptions": {
-        "outDir": "./build",
+        "outDir": "build",
         "module": "CommonJS",
         "target": "ES2021",
         "esModuleInterop": true,
-        "allowJs": true,
         "typeRoots": [
             "./node_modules/@types"
         ]
-    }
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "**/*.spec.ts",
+        "**/*.test.ts"
+    ]
 }
