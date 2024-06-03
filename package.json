@@ -40,5 +40,8 @@
     "mongodb": "^4.1.1",
     "sucrase": "^3.35.0",
     "validator": "^13.11.0"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
