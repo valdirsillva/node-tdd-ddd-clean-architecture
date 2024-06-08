@@ -2,10 +2,10 @@ version: "3.8"
 services:
   mongo:
     container_name: mongo-container
-    image: mongo:4
+    image: mongo:5.0.19
     restart: always
     volumes:
-      - ./data:/data/db
+      - data:/data/db
     ports:
       - "27017:27017"
     networks:
@@ -16,8 +16,6 @@ services:
     build: .
     image: clean-node-api
     restart: always
-    # volumes:
-    #   - ./build:/usr/src/clean-node-api/build
     ports:
       - "5000:5000"
     depends_on:

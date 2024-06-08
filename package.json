@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node build/main/server.js",
     "build": "tsc",
-    "dev": "sucrase-node src/main/server.ts",
+    "up": "npm run build && sudo docker compose up",
+    "down": "sudo docker compose down",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
@@ -38,7 +39,6 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^4.1.1",
-    "sucrase": "^3.35.0",
     "validator": "^13.11.0"
   },
   "engines": {
