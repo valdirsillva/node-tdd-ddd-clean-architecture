@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node build/main/server.js",
     "build": "tsc",
+    "debug": "node --watch ./build --inspect=0.0.0.0:9222 --nolazy ./build/main/server.js",
     "up": "npm run build && sudo docker compose up",
     "down": "sudo docker compose down",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",

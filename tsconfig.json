@@ -4,6 +4,8 @@
         "module": "CommonJS",
         "target": "ES2021",
         "esModuleInterop": true,
+        "sourceMap": true,
+        "rootDir": "src",
         "typeRoots": [
             "./node_modules/@types"
         ]
