@@ -1,8 +1,6 @@
 import { EmailValidation } from "./email-validation"
-import { EmailValidator } from "../../http/email-validator"
-import { HttpRequest } from "../../http"
-import { serverError } from "../http/http-helper"
-import { ServerError } from "../../errors"
+import { EmailValidator } from "../protocols/email-validator"
+import { HttpRequest } from "../../presentation/http"
 
 const makeEmailValidator = (): EmailValidator => {
     class EmailValidatorStub implements EmailValidator {
