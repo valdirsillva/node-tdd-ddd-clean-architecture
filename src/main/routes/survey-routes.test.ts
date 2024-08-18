@@ -56,17 +56,18 @@ describe('Survey Routes', () => {
             })
 
             const id = res.insertedId
-            const accessToken = sign({ id: id.toHexString() }, 'XYZ$XPTO', {
-                expiresIn: '1h'
-            })
+            const accessToken = sign({ id }, env.jwtSecret)
 
             await accountCollection.updateOne({
-                _id: new ObjectId(id)
+                _id: id
             }, {
                 $set: {
                     accessToken
                 }
             })
+
+            // Bug Fix
+
 
             // await request(app)
             //     .post('/api/surveys')
@@ -80,9 +81,6 @@ describe('Survey Routes', () => {
             //             answer: 'Answer 1',
             //         }]
             //     }).expect(204)
-
-
-
         })
     })
 })
