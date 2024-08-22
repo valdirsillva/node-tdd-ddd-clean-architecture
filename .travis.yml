@@ -4,4 +4,4 @@ node_js:
 dist: focal
 script:
   - eslint 'src/**'
-  - npm run test:coveralls
+  - npm run test:coveralls -- --detectOpenHandles
