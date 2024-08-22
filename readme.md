@@ -5,16 +5,29 @@
 Este projeto é uma API construída utilizando Node.js e TypeScript. O foco principal deste projeto é aplicar boas práticas de desenvolvimento, como TDD (Test-Driven Development), DDD (Domain-Driven Design), e Clean Architecture. Além disso, padrões de design (Design Patterns) e princípios SOLID são aplicados para garantir um código limpo, escalável e de fácil manutenção.
 
 ## Tecnologias Utilizadas
+## Ferramentas Utilizadas
 
-- **Node.js**: Plataforma para construção de aplicações server-side.
-- **TypeScript**: Superconjunto do JavaScript que adiciona tipagem estática opcional ao código.
+Este projeto utiliza uma variedade de ferramentas para garantir um desenvolvimento eficiente, testes abrangentes e uma arquitetura robusta. Abaixo está a lista das principais ferramentas e bibliotecas utilizadas:
+
+- **NPM**: Gerenciador de pacotes do Node.js.
+- **Typescript**: Superset de JavaScript que adiciona tipagem estática.
+- **Git**: Sistema de controle de versão distribuído.
+- **Docker**: Plataforma para desenvolvimento, envio e execução de aplicações em containers.
+- **Jest**: Framework de testes JavaScript para garantir a qualidade do código.
+- **MongoDB**: Banco de dados NoSQL orientado a documentos.
+- **Travis CI**: Serviço de integração contínua para testar e implantar o projeto.
+- **Bcrypt**: Biblioteca para hashing de senhas.
+- **JsonWebToken**: Biblioteca para criação e verificação de tokens JWT.
+- **Faker**: Gerador de dados falsos para testes.
+- **Coveralls**: Ferramenta para analisar a cobertura de código dos testes.
+- **Validator**: Biblioteca para validação de strings.
 - **Express**: Framework web minimalista para Node.js.
-- **Jest**: Framework de testes em JavaScript com suporte a testes unitários, de integração e de aceitação.
-- **Supertest**: Ferramenta para testes de integração em APIs Node.js.
-- **Tsyringe**: Container de injeção de dependências leve para TypeScript.
-- **TypeORM**: ORM (Object-Relational Mapper) para TypeScript e JavaScript que suporta diversos bancos de dados.
-- **ESLint**: Ferramenta de linting para identificar e corrigir problemas em seu código.
-- **Prettier**: Ferramenta de formatação de código para manter um estilo consistente.
+- **Supertest**: Ferramenta para testes de integração de APIs.
+- **Standard Javascript Style**: Estilo de código JavaScript que segue padrões de qualidade e consistência.
+- **Rimraf**: Utilitário para remover diretórios de forma recursiva.
+- **In-Memory MongoDB Server**: Ferramenta para executar instâncias do MongoDB na memória para testes.
+- **Bson ObjectId**: Biblioteca para trabalhar com IDs do MongoDB.
+
 
 ## Arquitetura
 
