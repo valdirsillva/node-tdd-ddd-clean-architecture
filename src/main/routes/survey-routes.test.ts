@@ -26,10 +26,6 @@ describe('Survey Routes', () => {
         await accountCollection.deleteMany({})
     })
 
-    afterEach(() => {
-        jest.clearAllMocks()
-    })
-
     describe('POST /surveys', () => {
         test('Should return 403 on add survey withount accessToken', async () => {
             await request(app)
