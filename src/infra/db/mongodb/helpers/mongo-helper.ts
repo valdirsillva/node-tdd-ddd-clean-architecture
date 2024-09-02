@@ -25,5 +25,14 @@ export const MongoHelper = {
         const insertedId = result.insertedId.toString()
         const account = { id: insertedId, ...accountData }
         return account
+    },
+
+    mapper: (data: any): any => {
+        return data.map((survey: any) => ({
+            id: survey._id.toString(),
+            question: survey.question,
+            answers: survey.answers,
+            date: survey.date,
+        }))
     }
 }
