@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node src/main/server.ts",
     "start": "node build/main/server.js",
     "build": "tsc",
     "debug": "node --watch ./build --inspect=0.0.0.0:9222 --nolazy ./build/main/server.js",
@@ -15,7 +16,8 @@
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage",
-    "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info"
+    "test:coveralls": "npm run test:ci && coveralls < coverage/lcov.info",
+    "test:debug": "jest --detectOpenHandles --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +38,7 @@
     "mockdate": "^3.0.5",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {

@@ -14,16 +14,16 @@ describe('Survey Routes', () => {
         await MongoHelper.connect(process.env.MONGO_URL!)
     })
 
-    afterAll(async () => {
-        await MongoHelper.disconnect()
-    })
-
     beforeEach(async () => {
         surveyCollection = await MongoHelper.getCollection('surveys')
         await surveyCollection.deleteMany({})
 
         accountCollection = await MongoHelper.getCollection('accounts')
         await accountCollection.deleteMany({})
+    })
+
+    afterAll(async () => {
+        await MongoHelper.disconnect()
     })
 
     afterEach(() => {
@@ -50,16 +50,16 @@ describe('Survey Routes', () => {
         test('Should return 204 on add survey with valid accessToken', async () => {
             const res = await accountCollection.insertOne({
                 name: 'Valdir',
-                email: 'valdir@gmail.com.br',
+                email: 'valdirpiresba@gmail.com',
                 password: '123',
                 role: 'admin'
             })
 
             const id = res.insertedId
-            const accessToken = sign({ id }, env.jwtSecret)
+            const accessToken = sign({ id: res.insertedId.toString() }, env.jwtSecret)
 
             await accountCollection.updateOne({
-                _id: id
+                _id: new ObjectId(id)
             }, {
                 $set: {
                     accessToken
@@ -67,20 +67,19 @@ describe('Survey Routes', () => {
             })
 
             // Bug Fix
-
-
-            // await request(app)
-            //     .post('/api/surveys')
-            //     .set('x-access-token', accessToken)
-            //     .send({
-            //         question: 'Question',
-            //         answers: [{
-            //             answer: 'Answer 1',
-            //             image: 'http://image-name.com'
-            //         }, {
-            //             answer: 'Answer 1',
-            //         }]
-            //     }).expect(204)
+            await request(app)
+                .post('/api/surveys')
+                .set('x-access-token', accessToken)
+                .send({
+                    question: 'Question',
+                    answers: [{
+                        answer: 'Answer 1',
+                        image: 'http://image-name.com'
+                    }, {
+                        answer: 'Answer 2'
+                    }]
+                })
+                .expect(204)
         })
     })
 
@@ -89,6 +88,40 @@ describe('Survey Routes', () => {
             await request(app)
                 .get('/api/surveys')
                 .expect(403)
+        })
+
+        test('Should return 200 on load surveys with valid accessToken', async () => {
+            const res = await accountCollection.insertOne({
+                name: 'Valdir',
+                email: 'valdirpiresba@gmail.com',
+                password: '123',
+                role: 'admin'
+            })
+
+            const id = res.insertedId
+            const accessToken = sign({ id: res.insertedId.toString() }, env.jwtSecret)
+            await accountCollection.updateOne({
+                _id: id
+            }, {
+                $set: {
+                    accessToken
+                }
+            })
+
+            await surveyCollection.insertMany([{
+                question: 'any_question',
+                answers: [{
+                    image: 'any_image',
+                    answer: 'any_answer'
+                }],
+                // date: new Date()
+            }])
+
+            // await request(app)
+            //     .get('/api/surveys')
+            //     .set('x-access-token', accessToken)
+            //     .expect(200)
+
         })
     })
 })
