@@ -1,4 +1,4 @@
-import { HttpRequest, Middleware } from "../../presentation/http";
+import { HttpRequest, Middleware } from "@/presentation/http"
 import { NextFunction, Request, Response } from 'express'
 
 /**

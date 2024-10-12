@@ -4,8 +4,12 @@
         "module": "CommonJS",
         "target": "ES2021",
         "esModuleInterop": true,
-        "sourceMap": false,
         "rootDir": "src",
+        "sourceMap": false,
+        "baseUrl": "src",
+        "paths": {
+            "@/*": ["*"]
+        },
         "typeRoots": [
             "./node_modules/@types"
         ]
@@ -13,8 +17,5 @@
     "include": [
         "src"
     ],
-    "exclude": [
-        "**/*.spec.ts",
-        "**/*.test.ts"
-    ]
+    "exclude": []
 }

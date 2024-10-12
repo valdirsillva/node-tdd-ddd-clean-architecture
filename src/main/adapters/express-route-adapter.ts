@@ -1,4 +1,4 @@
-import { Controller, HttpRequest } from "../../presentation/http";
+import { Controller, HttpRequest } from "@/presentation/http"
 import { Request, Response } from 'express'
 
 export const adapterRoute = (controller: Controller) => {
@@ -7,8 +7,6 @@ export const adapterRoute = (controller: Controller) => {
             body: req.body,
             headers: req.headers
         }
-
-        console.log(httpRequest)
         
         const httpResponse = await controller.handle(httpRequest)   
 
