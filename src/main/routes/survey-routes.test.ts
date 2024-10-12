@@ -51,11 +51,11 @@ describe('Survey Routes', () => {
                 role: 'admin'
             })
 
-            const id = res.insertedId
-            const accessToken = sign({ id: res.insertedId.toString() }, env.jwtSecret)
+            const id = res.insertedId.toString()
+            const accessToken = sign({ id }, env.jwtSecret)
 
             await accountCollection.updateOne({
-                _id: new ObjectId(id)
+                _id: res.insertedId
             }, {
                 $set: {
                     accessToken
@@ -76,6 +76,7 @@ describe('Survey Routes', () => {
                     }]
                 })
                 .expect(204)
+            
         })
     })
 
@@ -110,14 +111,13 @@ describe('Survey Routes', () => {
                     image: 'any_image',
                     answer: 'any_answer'
                 }],
-                // date: new Date()
+                date: new Date()
             }])
 
-            // await request(app)
-            //     .get('/api/surveys')
-            //     .set('x-access-token', accessToken)
-            //     .expect(200)
-
+            await request(app)
+                .get('/api/surveys')
+                .set('x-access-token', accessToken)
+                .expect(200)
         })
     })
 })
