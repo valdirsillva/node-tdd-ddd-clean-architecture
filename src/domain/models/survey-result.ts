@@ -5,8 +5,3 @@ export interface SurveyResultModel {
     answers: string
     date: Date
 }
-
-export interface SurveyAnswerModel {
-    image?: string
-    answer: string
-}
