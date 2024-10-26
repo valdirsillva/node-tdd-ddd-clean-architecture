@@ -48,7 +48,7 @@ describe('Survey Mongo Repository', () => {
                 answers: [{
                     image: 'any_image',
                     answer: 'any_answer'
-                },],
+                }],
                 date: new Date()
             },
             {
@@ -56,7 +56,7 @@ describe('Survey Mongo Repository', () => {
                 answers: [{
                     image: 'other_image',
                     answer: 'other_answer'
-                },],
+                }],
                 date: new Date()
             }
             ])
@@ -71,6 +71,23 @@ describe('Survey Mongo Repository', () => {
             const sut = makeSut()
             const surveys = await sut.loadAll()
             expect(surveys.length).toBe(0)
+        })
+    })
+
+    describe('loadById()', () => {
+        test('Should load survey by id on success', async () => {
+            const res = await surveyCollection.insertOne({
+                question: 'any_question',
+                answers: [{
+                    image: 'any_image',
+                    answer: 'any_answer'
+                }],
+                date: new Date()
+            })
+            const id = res.insertedId.toHexString()
+            const sut = makeSut()
+            const survey = await sut.loadById(id)
+            expect(survey).toBeTruthy()
         })
     })
 })
