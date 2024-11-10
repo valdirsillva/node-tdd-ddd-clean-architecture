@@ -1,7 +1,8 @@
 import { forbidden } from '@/presentation/helpers/http/http-helper'
 import { SaveSurveyResultController } from './save-survey-result-controller'
-import { HttpRequest, LoadSurveyById, SurveyModel } from './save-survey-result-controller-protocols'
+import { HttpRequest, LoadSurveyById, SaveSurveyResult, SaveSurveyResultParams, SurveyModel } from './save-survey-result-controller-protocols'
 import { InvalidParamError } from '@/presentation/errors'
+import { SurveyResultModel } from '@/domain/models/survey-result'
 
 const makeFakeRequest = (): HttpRequest => ({
     params: {
@@ -19,6 +20,14 @@ const makeFakeSurvey = (): SurveyModel => ({
     date: new Date()
 })
 
+const makeFakeSurveyResult = (): SurveyResultModel => ({
+    id: 'any_survey_id',
+    accountId: 'any_account_id',
+    surveyId: 'any_survey_id',
+    answer: 'any_answer',
+    date: new Date()
+})
+
 const makeLoadSurveyById = (): LoadSurveyById => {
     class LoadSurveyByIdStub implements LoadSurveyById {
         async loadById(id: string): Promise<SurveyModel> {
@@ -28,17 +37,29 @@ const makeLoadSurveyById = (): LoadSurveyById => {
     return new LoadSurveyByIdStub()
 }
 
+const makeSaveSurveyResult = (): SaveSurveyResult => {
+    class SaveSurveyResultStub implements SaveSurveyResult {
+        async save(account: SaveSurveyResultParams): Promise<SurveyResultModel> {
+            return new Promise(resolve => resolve(makeFakeSurveyResult()))
+        }
+    }
+    return new SaveSurveyResultStub()
+}
+
 type SutTypes = {
     sut: SaveSurveyResultController
     loadSurveyByIdStub: LoadSurveyById
+    saveSurveyResultStub: SaveSurveyResult
 }
 
 const makeSut = (): SutTypes => {
     const loadSurveyByIdStub = makeLoadSurveyById()
-    const sut = new SaveSurveyResultController(loadSurveyByIdStub)
+    const saveSurveyResultStub = makeSaveSurveyResult()
+    const sut = new SaveSurveyResultController(loadSurveyByIdStub, saveSurveyResultStub)
     return {
         sut,
-        loadSurveyByIdStub
+        loadSurveyByIdStub,
+        saveSurveyResultStub
     }
 }
 
