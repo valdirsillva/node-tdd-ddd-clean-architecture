@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src/main/server.ts",
-    "start": "node build/main/server.js",
+    "start": "node --watch build/main/server.js",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "debug": "node --watch ./build --inspect=0.0.0.0:9222 --nolazy ./build/main/server.js",
     "up": "npm run build && sudo docker compose up",
