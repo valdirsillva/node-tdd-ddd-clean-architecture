@@ -42,6 +42,7 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
                 role: 'admin'
             }]
         })
+        
         if (account) {
             const { _id, name, email, password } = account
             return account && { id: _id.toString(), name, email, password }

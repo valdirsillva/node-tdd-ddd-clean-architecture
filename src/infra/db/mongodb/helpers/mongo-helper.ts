@@ -29,6 +29,11 @@ export const MongoHelper = {
     return account
   },
 
+  // map: (data: any): any => {
+  //   const { _id, ...rest } = data
+  //   return { ...rest, id: _id.toHexString() }
+  // },
+
   mapper: (data: any): any => {
     return data.map((survey: any) => ({
       id: survey._id.toString(),
@@ -36,5 +41,14 @@ export const MongoHelper = {
       answers: survey.answers,
       date: survey.date,
     }))
+  },
+
+  mapperItem: (data: any): any => {
+    return {
+      id: data?._id ? data._id.toString() : null,
+      question: data.question,
+      answers: data.answers,
+      date: data.date,
+    }
   }
 }

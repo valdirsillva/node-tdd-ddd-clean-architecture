@@ -13,6 +13,7 @@ export const mockSurveyModel = (): SurveyModel => {
     }
 }
 
+
 export const mockSurveysModels = (): SurveyModel[] => {
     return [{
         id: 'any_id',
