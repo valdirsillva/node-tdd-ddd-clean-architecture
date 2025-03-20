@@ -23,7 +23,7 @@ export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRe
         const surveyCollection = await MongoHelper.getCollection('surveys')
         const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
         const surveyModel: SurveyModel = {
-            id: survey._id.toHexString(),
+            id: survey._id instanceof ObjectId ? survey._id.toHexString() : '',
             question: survey.question,
             answers: survey.answers,
             date: survey.date
