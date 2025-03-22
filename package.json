@@ -3,7 +3,7 @@
   "version": "2.3.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "ts-node src/main/server.ts",
     "start": "node --watch build/main/server.js",
