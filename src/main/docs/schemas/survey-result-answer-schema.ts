@@ -1,19 +1,19 @@
 
 export const surveyResultAnswerSchema = {
-    type: 'object',
-    properties: {
-        image: {
-            type: 'string'
-        },
-        answer: {
-            type: 'string'
-        },
-        count: {
-            type: 'number'
-        },
-        percent: {
-            type: 'number'
-        }
+  type: 'object',
+  properties: {
+    image: {
+      type: 'string'
     },
-    required: ['image', 'answer', 'count', 'percent']
+    answer: {
+      type: 'string'
+    },
+    count: {
+      type: 'number'
+    },
+    percent: {
+      type: 'number'
+    }
+  },
+  required: ['image', 'answer', 'count', 'percent']
 }

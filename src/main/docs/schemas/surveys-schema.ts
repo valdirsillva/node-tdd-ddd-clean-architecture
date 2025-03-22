@@ -1,7 +1,7 @@
 
 export const surveysSchema = {
-    type: 'array',
-    items: {
-        $ref: '#/schemas/survey'
-    }
+  type: 'array',
+  items: {
+    $ref: '#/schemas/survey'
+  }
 }

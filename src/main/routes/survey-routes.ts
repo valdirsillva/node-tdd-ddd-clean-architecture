@@ -6,6 +6,6 @@ import { Router } from 'express'
 import { auth } from '../middlewares/auth'
 
 export default (router: Router): void => {
-    router.post('/surveys', adminAuth, adapterRoute(makeAddSurveyController()))
-    router.get('/surveys', auth, adapterRoute(makeLoadSurveysController()))
+  router.post('/surveys', adminAuth, adapterRoute(makeAddSurveyController()))
+  router.get('/surveys', auth, adapterRoute(makeLoadSurveysController()))
 }

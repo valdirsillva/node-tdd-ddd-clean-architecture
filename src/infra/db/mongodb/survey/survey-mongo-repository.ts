@@ -7,27 +7,27 @@ import { LoadSurveyByIdRepository } from '@/data/usecases/survey/load-survey-by-
 import { ObjectId } from 'mongodb'
 
 export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository, LoadSurveyByIdRepository {
-    async add(surveyData: AddSurveyParams): Promise<void> {
-        const surveyCollection = await MongoHelper.getCollection('surveys')
-        await surveyCollection.insertOne(surveyData)
-    }
+  async add(surveyData: AddSurveyParams): Promise<void> {
+    const surveyCollection = await MongoHelper.getCollection('surveys')
+    await surveyCollection.insertOne(surveyData)
+  }
 
-    async loadAll(): Promise<SurveyModel[]> {
-        const surveyCollection = await MongoHelper.getCollection('surveys')
-        const results = await surveyCollection.find().toArray()
-        const surveys = MongoHelper.mapper(results)
-        return surveys
-    }
+  async loadAll(): Promise<SurveyModel[]> {
+    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const results = await surveyCollection.find().toArray()
+    const surveys = MongoHelper.mapper(results)
+    return surveys
+  }
 
-    async loadById(id: string): Promise<SurveyModel> {
-        const surveyCollection = await MongoHelper.getCollection('surveys')
-        const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
-        const surveyModel: SurveyModel = {
-            id: survey._id instanceof ObjectId ? survey._id.toHexString() : '',
-            question: survey.question,
-            answers: survey.answers,
-            date: survey.date
-        }
-        return surveyModel
+  async loadById(id: string): Promise<SurveyModel> {
+    const surveyCollection = await MongoHelper.getCollection('surveys')
+    const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
+    const surveyModel: SurveyModel = {
+      id: survey._id instanceof ObjectId ? survey._id.toHexString() : '',
+      question: survey.question,
+      answers: survey.answers,
+      date: survey.date
     }
+    return surveyModel
+  }
 }

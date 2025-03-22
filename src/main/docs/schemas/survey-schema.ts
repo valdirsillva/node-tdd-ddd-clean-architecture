@@ -1,22 +1,22 @@
 
 export const surveySchema = {
-    type: 'object',
-    properties: {
-        id: {
-            type: 'string'
-        },
-        question: {
-            type: 'string'
-        },
-        answers: {
-            type: 'array',
-            items: {
-                $ref: '#/schemas/surveyAnswer'
-            }
-        },
-        date: {
-            type: 'string'
-        }
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string'
     },
-    required: ['id', 'qestion', 'answers', 'date']
+    question: {
+      type: 'string'
+    },
+    answers: {
+      type: 'array',
+      items: {
+        $ref: '#/schemas/surveyAnswer'
+      }
+    },
+    date: {
+      type: 'string'
+    }
+  },
+  required: ['id', 'qestion', 'answers', 'date']
 }

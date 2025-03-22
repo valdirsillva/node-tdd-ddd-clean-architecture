@@ -7,37 +7,37 @@ import { SurveyResultModel } from '@/domain/models/survey-result'
 import { mockSurveysModels, mockSurveyModel, mockSurveyModelResult } from '@/domain/test'
 
 export const mockAddSurvey = (): AddSurvey => {
-    class AddSurveyStub implements AddSurvey {
-        add(data: AddSurveyParams): Promise<void> {
-            return Promise.resolve()
-        }
+  class AddSurveyStub implements AddSurvey {
+    add(data: AddSurveyParams): Promise<void> {
+      return Promise.resolve()
     }
-    return new AddSurveyStub()
+  }
+  return new AddSurveyStub()
 }
 
 export const mockLoadSurveys = (): LoadSurveys => {
-    class LoadSurveysStub implements LoadSurveys {
-        async load(): Promise<SurveyModel[]> {
-            return Promise.resolve(mockSurveysModels())
-        }
+  class LoadSurveysStub implements LoadSurveys {
+    async load(): Promise<SurveyModel[]> {
+      return Promise.resolve(mockSurveysModels())
     }
-    return new LoadSurveysStub()
+  }
+  return new LoadSurveysStub()
 }
 
 export const mockLoadSurveyById = (): LoadSurveyById => {
-    class LoadSurveyByIdStub implements LoadSurveyById {
-        async loadById(id: string): Promise<SurveyModel> {
-            return Promise.resolve(mockSurveyModel())
-        }
+  class LoadSurveyByIdStub implements LoadSurveyById {
+    async loadById(id: string): Promise<SurveyModel> {
+      return Promise.resolve(mockSurveyModel())
     }
-    return new LoadSurveyByIdStub()
+  }
+  return new LoadSurveyByIdStub()
 }
 
 export const mockSaveSurveyResult = (): SaveSurveyResult => {
-    class SaveSurveyResultStub implements SaveSurveyResult {
-        async save(account: SaveSurveyResultParams): Promise<SurveyResultModel> {
-            return Promise.resolve(mockSurveyModelResult())
-        }
+  class SaveSurveyResultStub implements SaveSurveyResult {
+    async save(account: SaveSurveyResultParams): Promise<SurveyResultModel> {
+      return Promise.resolve(mockSurveyModelResult())
     }
-    return new SaveSurveyResultStub()
+  }
+  return new SaveSurveyResultStub()
 }

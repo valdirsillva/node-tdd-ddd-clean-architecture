@@ -5,6 +5,6 @@ import { makeLogControllerDecorator } from "@/main/factories/decorators/log-cont
 import { makeDbAuthentication } from "@/main/factories/usecases/account/authentication/db-authentication-factory"
 
 export const makeLoginController = (): Controller => {
-    const controller = new LoginController(makeDbAuthentication(), makeLoginValidation())
-    return makeLogControllerDecorator(controller)
+  const controller = new LoginController(makeDbAuthentication(), makeLoginValidation())
+  return makeLogControllerDecorator(controller)
 }
