@@ -4,14 +4,14 @@ import { InvalidParamError } from '@/presentation/errors'
 
 export class SaveSurveyResultController implements Controller {
   constructor(
-        private readonly loadSurveyById: LoadSurveyById,
-        private readonly saveSurveyResult: SaveSurveyResult
+    private readonly loadSurveyById: LoadSurveyById,
+    private readonly saveSurveyResult: SaveSurveyResult
   ) { }
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const { accountId } = httpRequest
-      const { answer } = httpRequest.body
+      const answer = httpRequest.body.answer
       const { surveyId } = httpRequest.params
       const survey = await this.loadSurveyById.loadById(surveyId)
 
@@ -20,6 +20,7 @@ export class SaveSurveyResultController implements Controller {
       }
 
       const answers = survey.answers.map(a => a.answer)
+
       if (!answers.includes(answer)) {
         return forbidden(new InvalidParamError('answer'))
       }
@@ -38,9 +39,9 @@ export class SaveSurveyResultController implements Controller {
 }
 
 export namespace SaveSurveyResultController {
-    export type Request = {
-        surveyId: string
-        answer: string
-        accountId: string
-    }
+  export type Request = {
+    surveyId: string
+    answer: string
+    accountId: string
+  }
 }

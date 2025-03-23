@@ -1,25 +1,22 @@
 import { forbidden } from '@/presentation/helpers/http/http-helper'
 import { SaveSurveyResultController } from './save-survey-result-controller'
-import { HttpRequest, LoadSurveyById, SaveSurveyResult, SaveSurveyResults } from './save-survey-result-controller-protocols'
+import { HttpRequest, LoadSurveyById, SaveSurveyResult } from './save-survey-result-controller-protocols'
 import { InvalidParamError } from '@/presentation/errors'
 import { mockLoadSurveyById, mockSaveSurveyResult } from '@/presentation/test/mock-survey'
 
-// const makeFakeRequest = (): HttpRequest => ({
-//     params: {
-//         surveyId: 'any_survey_id'
-//     }
-// })
-
-const makeFakeRequest = (): SaveSurveyResultController.Request => ({
-  surveyId: 'any_survey_id',
-  accountId: 'any_account_id',
-  answer: 'any_answer'
+const makeFakeRequest = (): HttpRequest => ({
+  // surveyId: 'any_survey_id',
+  // accountId: 'any_account_id',
+  // answer: 'any_answer'
+  params: { surveyId: 'any_survey_id' },
+  body: { answer: 'any_answer' },
+  accountId: 'any_account_id'
 })
 
 type SutTypes = {
-    sut: SaveSurveyResultController
-    loadSurveyByIdStub: LoadSurveyById
-    saveSurveyResultStub: SaveSurveyResult
+  sut: SaveSurveyResultController
+  loadSurveyByIdStub: LoadSurveyById
+  saveSurveyResultStub: SaveSurveyResult
 }
 
 const makeSut = (): SutTypes => {
