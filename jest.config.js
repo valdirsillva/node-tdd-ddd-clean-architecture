@@ -7,8 +7,11 @@ module.exports = {
         '!**/data/**',
         '!**/domain/**',
         '!<rootDir>/src/**/*index.ts',
-        '!<rootDir>/src/**/*-protocols.ts',
+        '!<rootDir>/src/**/*protocols.ts',
         '!<rootDir>/src/mocks/**',
+        '!<rootDir>/src/presentation/http/**',
+        '!<rootDir>/src/infra/db/mongodb/helpers/**',
+        '!<rootDir>/src/validation/protocols/**',
     ],
     coverageDirectory: 'coverage',
     testEnvironment: "node",
@@ -17,7 +20,7 @@ module.exports = {
         '.+\\.ts$': 'ts-jest',
     },
     moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/$1'
-  }
-    
+        '@/(.*)': '<rootDir>/src/$1'
+    }
+
 }

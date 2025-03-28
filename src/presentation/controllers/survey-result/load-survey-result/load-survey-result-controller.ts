@@ -2,7 +2,6 @@ import { forbidden, ok, serverError } from '@/presentation/helpers/http/http-hel
 import { Controller, HttpRequest, HttpResponse, LoadSurveyById, LoadSurveyResult } from './load-survey-result-controller-protocols'
 import { InvalidParamError } from '@/presentation/errors'
 
-
 export class LoadSurveyResultController implements Controller {
 	constructor(
 		private readonly loadSurveyById: LoadSurveyById,

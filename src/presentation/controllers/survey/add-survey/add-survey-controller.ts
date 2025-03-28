@@ -3,8 +3,8 @@ import { AddSurvey, Controller, HttpRequest, HttpResponse, Validation } from './
 
 export class AddSurveyController implements Controller {
   constructor(
-        private readonly validation: Validation,
-        private readonly addSurvey: AddSurvey
+    private readonly validation: Validation,
+    private readonly addSurvey: AddSurvey
   ) { }
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
