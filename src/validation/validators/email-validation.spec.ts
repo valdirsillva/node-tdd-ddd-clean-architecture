@@ -4,8 +4,8 @@ import { HttpRequest } from '@/presentation/http'
 import { mockEmailValidator } from '../test'
 
 type SutTypes = {
-    sut: EmailValidation
-    emailValidatorStub: EmailValidator
+  sut: EmailValidation
+  emailValidatorStub: EmailValidator
 }
 
 // Pattners Factory
@@ -18,7 +18,7 @@ const makeSut = (): SutTypes => {
   }
 }
 
-const makeFakeRequest = (): HttpRequest => ({
+const mockRequest = (): HttpRequest => ({
   body: {
     name: 'any_name',
     email: 'any_email@gmail.com',
