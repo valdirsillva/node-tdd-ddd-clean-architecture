@@ -49,6 +49,15 @@ describe('Auth Middleware', () => {
     expect(httpResponse).toEqual(forbidden(new AccessDeniedError()))
   })
 
+  test('Should return forbidden if token is invalid', async () => {
+    const loadAccountByToken = { load: jest.fn().mockResolvedValue(null) }
+    const sut = new AuthMiddleware(loadAccountByToken)
+    const httpRequest = { headers: { 'x-access-token': 'invalid_token' } }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse).toEqual(forbidden(new AccessDeniedError()))
+    expect(loadAccountByToken.load).toHaveBeenCalledWith('invalid_token', undefined)
+  })
+
   test('Should return 200 if LoadAccountByToken returns an account', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(mockRequest())

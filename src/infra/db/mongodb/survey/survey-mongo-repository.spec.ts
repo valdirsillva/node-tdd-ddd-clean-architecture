@@ -1,6 +1,6 @@
 import { MongoHelper } from '../helpers/mongo-helper'
 import { SurveyMongoRepository } from './survey-mongo-repository'
-import { Collection } from 'mongodb'
+import { Collection, ObjectId } from 'mongodb'
 
 let surveyCollection: Collection
 
@@ -88,6 +88,18 @@ describe('Survey Mongo Repository', () => {
       const sut = makeSut()
       const survey = await sut.loadById(id)
       expect(survey).toBeTruthy()
+    })
+
+    test('Should return an empty array if there are no surveys', async () => {
+      const sut = new SurveyMongoRepository()
+      const surveys = await sut.loadAll()
+      expect(surveys).toEqual([])
+    })
+
+    test('Should return null if it does not find a survey by ID', async () => {
+      const sut = makeSut()
+      const survey = await sut.loadById(new ObjectId().toHexString())
+      expect(survey).toBeNull()
     })
   })
 })
