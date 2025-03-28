@@ -37,7 +37,7 @@ describe('Survey Routes', () => {
 
     surveyCollection = await MongoHelper.getCollection('surveys')
     await surveyCollection.deleteMany({})
-		
+
   })
 
   afterAll(async () => {
@@ -70,6 +70,14 @@ describe('Survey Routes', () => {
         .set('x-access-token', accessToken)
         .send({ answer: 'Answer 1' })
         .expect(200)
+    })
+  })
+
+  describe('GET /surveys/:surveyId/results', () => {
+    test('Should return 403 on load survey result withount accessToken', async () => {
+      await request(app)
+        .get('/api/surveys/any_id/results')
+        .expect(403)
     })
   })
 })
