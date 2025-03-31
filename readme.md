@@ -1,5 +1,7 @@
 # API CLEAN NODE
 
+![](https://github.com/valdirsillva/node-tdd-ddd-clean-architecture/blob/main/public/img/logo-course.png)
+
 ## Descrição do Projeto
 
 Este projeto é uma API construída utilizando Node.js e TypeScript. O foco principal deste projeto é aplicar boas práticas de desenvolvimento, como TDD (Test-Driven Development), DDD (Domain-Driven Design), e Clean Architecture. Além disso, padrões de design (Design Patterns) e princípios SOLID são aplicados para garantir um código limpo, escalável e de fácil manutenção.
